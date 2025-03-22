@@ -1,1 +1,60 @@
-<h1>Github pages test</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flor Amarilla Animada</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navigation">
+    <ul>
+      <li><a href="collage.html">fotitos</a></li>
+    </ul>
+  <button id="mostrarFlor">Mostrar Flor</button>
+
+  <div class="flor" id="flor">
+    <div class="petalo petalo1" style="--angle: 0deg;"></div>
+    <div class="petalo petalo2" style="--angle: 45deg;"></div>
+    <div class="petalo petalo3" style="--angle: 90deg;"></div>
+    <div class="petalo petalo4" style="--angle: 135deg;"></div>
+    <div class="petalo petalo5" style="--angle: 180deg;"></div>
+    <div class="petalo petalo6" style="--angle: 225deg;"></div>
+    <div class="petalo petalo7" style="--angle: 270deg;"></div>
+    <div class="petalo petalo8" style="--angle: 315deg;"></div>
+    <div class="centro"></div>
+    <div class="tallo">
+      <div class="hoja"></div>
+    </div>
+  </div>
+
+ <h1><div class="mensaje" id="mensaje">Te amo con todo mi meloncito 💛</div></h1>
+  <script>
+    const btn = document.getElementById('mostrarFlor');
+    const flor = document.getElementById('flor');
+    const mensaje = document.getElementById('mensaje');
+
+    btn.addEventListener('click', () => {
+      flor.style.display = 'flex';
+      mensaje.style.display = 'block';
+      generarCorazones();
+      btn.style.display = 'none';
+    });
+
+    function generarCorazones() {
+      for (let i = 0; i < 30; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.animationDuration = 4 + Math.random() * 3 + 's';
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+          corazon.remove();
+        }, 7000);
+      }
+    }
+  </script>
+  
+</body>
+</html>

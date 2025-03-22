@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #4f6641;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+
+#mostrarFlor {
+  background: #ff69b4;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff69b4;
+  z-index: 10;
+  position: relative;
+}
+
+.flor {
+  display: none;
+  position: relative;
+  width: 200px;
+  height: 500px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translate(30%, -10%)
+}
+
+.centro {
+  width: 180px;
+  height: 180px;
+  background: rgb(46, 46, 43);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%)
+}
+
+.petalo {
+  position: absolute;
+  top: 100px;
+  width: 80px;
+  height: 120px;
+  background: yellow;
+  border-radius: 50% 50% 0 0;
+  opacity: 0.9;
+  transform-origin: bottom center;
+  animation: latido 2s ease-in-out infinite;
+
+}
+
+.petalo1 { transform: rotate(0deg) translateY(-90px); }
+.petalo2 { transform: rotate(45deg) translateY(-90px); }
+.petalo3 { transform: rotate(90deg) translateY(-90px); }
+.petalo4 { transform: rotate(135deg) translateY(-90px); }
+.petalo5 { transform: rotate(180deg) translateY(-90px); }
+.petalo6 { transform: rotate(225deg) translateY(-90px); }
+.petalo7 { transform: rotate(270deg) translateY(-90px); }
+.petalo8 { transform: rotate(315deg) translateY(-90px); }
+
+@keyframes latido {
+  0%, 100% {
+    transform: scale(1) rotate(var(--angle)) translateY(-90px);
+  }
+  50% {
+    transform: scale(1.05) rotate(var(--angle)) translateY(-90px);
+  }
+  
+}
+
+.tallo {
+  width: 20px;
+  height: 220px;
+  background: rgb(136, 136, 8);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, 25%)
+}
+
+.hoja {
+  width: 50px;
+  height: 20px;
+  background: green;
+  position: absolute;
+  left: -45px;
+  top: 80px;
+  border-radius: 20px 0 20px 0;
+  transform: rotate(-30deg);
+  box-shadow: 0 0 5px #66ff66;
+  
+}
+
+/* Corazones flotantes */
+.corazon {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  transform: rotate(45deg);
+  top: 100%;
+  animation: flotar 6s linear infinite;
+  z-index: 5;
+}
+
+.corazon::before,
+.corazon::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.corazon::before {
+  top: -10px;
+  left: 0;
+}
+
+.corazon::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Mensaje romántico */
+.mensaje {
+  margin-top: 20px;
+  color: #ffccff;
+  font-size: 24px;
+  text-align: center;
+  display: none;
+  animation: aparecer 2s ease forwards;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+gallery {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2.5em;
+  color: #0e48a0;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(48, 11, 134, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05); /* Aumenta el tamaño de la imagen */
+  box-shadow: 0 6px 12px rgba(59, 11, 148, 0.4);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1); /* Efecto de zoom en la imagen al pasar el mouse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
+}
